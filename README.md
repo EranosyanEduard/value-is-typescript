@@ -14,6 +14,7 @@ type Keys =
     | 'bigint'
     | 'bool'
     | 'char'
+    | 'falsy'
     | 'float'
     | 'fun'
     | 'int'
@@ -24,18 +25,20 @@ type Keys =
     | 'obj'
     | 'str'
     | 'sym'
+    | 'truthy'
     | 'undef'
 
 /**
  * @description
  * Type is lib interface.
  */
-export interface Is {
+interface Is {
     all: {
         arr: (v: unknown[]) => v is unknown[][]
         bigint: (v: unknown[]) => v is bigint[]
         bool: (v: unknown[]) => v is boolean[]
         char: (v: unknown[]) => boolean
+        falsy: (v: unknown[]) => boolean
         float: (v: unknown[]) => boolean
         fun: (v: unknown[]) => v is Function[]
         int: (v: unknown[]) => boolean
@@ -46,6 +49,7 @@ export interface Is {
         obj: (v: unknown[]) => v is object[]
         str: (v: unknown[]) => v is string[]
         sym: (v: unknown[]) => v is symbol[]
+        truthy: (v: unknown[]) => boolean
         undef: (v: unknown[]) => v is undefined[]
 
         empty: {
@@ -91,6 +95,7 @@ export interface Is {
     bigint: (v: unknown) => v is bigint
     bool: (v: unknown) => v is boolean
     char: (v: unknown) => boolean
+    falsy: (v: unknown) => boolean
     float: (v: unknown) => boolean
     fun: (v: unknown) => v is Function
     int: (v: unknown) => boolean
@@ -101,6 +106,7 @@ export interface Is {
     obj: (v: unknown) => v is object
     str: (v: unknown) => v is string
     sym: (v: unknown) => v is symbol
+    truthy: (v: unknown) => boolean
     undef: (v: unknown) => v is undefined
 
     empty: {
