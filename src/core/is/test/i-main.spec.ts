@@ -137,6 +137,39 @@ describe('Тест основных интерфейсов, исключая all
     })
   })
 
+  describe('Тест интерфейса falsy', () => {
+    it('Аргумент: array, результат: false', () => {
+      assert.isFalse(is.falsy([]))
+    })
+    it('Аргумент: null, результат: true', () => {
+      assert.isTrue(is.falsy(null))
+    })
+    it('Аргумент: true, результат: false', () => {
+      assert.isFalse(is.falsy(true))
+    })
+    it('Аргумент: false, результат: true', () => {
+      assert.isTrue(is.falsy(false))
+    })
+    it('Аргумент: negative number, результат: false', () => {
+      assert.isFalse(is.falsy(-1))
+    })
+    it('Аргумент: positive number, результат: false', () => {
+      assert.isFalse(is.falsy(1))
+    })
+    it('Аргумент: 0, результат: true', () => {
+      assert.isTrue(is.falsy(0))
+    })
+    it('Аргумент: not empty string, результат: false', () => {
+      assert.isFalse(is.falsy('Hello, world!'))
+    })
+    it('Аргумент: empty string, результат: true', () => {
+      assert.isTrue(is.falsy(''))
+    })
+    it('Аргумент: undefined, результат: true', () => {
+      assert.isTrue(is.falsy(undefined))
+    })
+  })
+
   describe('Тест интерфейса float', () => {
     it('Аргумент: array, результат: false', () => {
       assert.isFalse(is.float([]))
@@ -473,6 +506,39 @@ describe('Тест основных интерфейсов, исключая all
     })
     it('Аргумент: undefined, результат: false', () => {
       assert.isFalse(is.sym(undefined))
+    })
+  })
+
+  describe('Тест интерфейса truthy', () => {
+    it('Аргумент: array, результат: true', () => {
+      assert.isTrue(is.truthy([]))
+    })
+    it('Аргумент: null, результат: false', () => {
+      assert.isFalse(is.truthy(null))
+    })
+    it('Аргумент: false, результат: true', () => {
+      assert.isTrue(is.truthy(true))
+    })
+    it('Аргумент: true, результат: false', () => {
+      assert.isFalse(is.truthy(false))
+    })
+    it('Аргумент: negative number, результат: true', () => {
+      assert.isTrue(is.truthy(-1))
+    })
+    it('Аргумент: positive number, результат: true', () => {
+      assert.isTrue(is.truthy(1))
+    })
+    it('Аргумент: 0, результат: false', () => {
+      assert.isFalse(is.truthy(0))
+    })
+    it('Аргумент: not empty string, результат: true', () => {
+      assert.isTrue(is.truthy('Hello, world!'))
+    })
+    it('Аргумент: empty string, результат: false', () => {
+      assert.isFalse(is.truthy(''))
+    })
+    it('Аргумент: undefined, результат: false', () => {
+      assert.isFalse(is.truthy(undefined))
     })
   })
 

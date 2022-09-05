@@ -1,6 +1,8 @@
+import { Predicate } from '../../../models'
 import { emptyChecker, typeChecker } from '../../checkers'
+import { Keys } from './model'
 
-class Is {
+class Is implements Record<Keys, Predicate> {
   readonly empty = {
     arr: (v: unknown[] | unknown[][]): boolean => {
       return this.#check(emptyChecker, 'ARR', v)
@@ -48,6 +50,10 @@ class Is {
     return this.#check(typeChecker, 'CHAR', v)
   }
 
+  falsy(v: unknown): boolean {
+    return this.#check(typeChecker, 'FALSY', v)
+  }
+
   float(v: unknown): boolean {
     return this.#check(typeChecker, 'FLOAT', v)
   }
@@ -86,6 +92,10 @@ class Is {
 
   sym(v: unknown): boolean {
     return this.#check(typeChecker, 'symbol', v)
+  }
+
+  truthy(v: unknown): boolean {
+    return this.#check(typeChecker, 'TRUTHY', v)
   }
 
   undef(v: unknown): boolean {

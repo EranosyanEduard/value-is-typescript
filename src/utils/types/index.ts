@@ -8,11 +8,13 @@ export type Types =
   | typeof DefaultType
   | 'ARR'
   | 'CHAR'
+  | 'FALSY'
   | 'FLOAT'
   | 'INT'
   | 'NAN'
   | 'NULL'
   | 'NULLABLE'
+  | 'TRUTHY'
 
 /**
  * @description
@@ -23,6 +25,7 @@ export const TypeList: readonly Types[] = [
   'bigint',
   'boolean',
   'CHAR',
+  'FALSY',
   'FLOAT',
   'function',
   'INT',
@@ -33,5 +36,6 @@ export const TypeList: readonly Types[] = [
   'object',
   'string',
   'symbol',
+  'TRUTHY',
   'undefined'
 ]

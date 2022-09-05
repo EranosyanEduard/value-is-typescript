@@ -4,11 +4,12 @@ import { Predicate, TypeGuardA, TypeGuardB } from '../../../models'
  * @description
  * Тип, представляющий названия интерфейсов, доступных для проверки значений.
  */
-type Keys =
+export type Keys =
   | 'arr'
   | 'bigint'
   | 'bool'
   | 'char'
+  | 'falsy'
   | 'float'
   | 'fun'
   | 'int'
@@ -19,6 +20,7 @@ type Keys =
   | 'obj'
   | 'str'
   | 'sym'
+  | 'truthy'
   | 'undef'
 
 /**
@@ -41,17 +43,19 @@ interface All {
   arr: TypeGuardB<unknown[]>
   bigint: TypeGuardB<bigint>
   bool: TypeGuardB<boolean>
-  char: Predicate
-  float: Predicate
+  char: Predicate<unknown[]>
+  falsy: Predicate<unknown[]>
+  float: Predicate<unknown[]>
   fun: TypeGuardB<Function>
-  int: Predicate
-  nan: Predicate
+  int: Predicate<unknown[]>
+  nan: Predicate<unknown[]>
   null: TypeGuardB<null>
   nullable: TypeGuardB<Array<null | undefined>>
   num: TypeGuardB<number>
   obj: TypeGuardB<object>
   str: TypeGuardB<string>
   sym: TypeGuardB<symbol>
+  truthy: Predicate<unknown[]>
   undef: TypeGuardB<undefined>
 }
 
@@ -70,6 +74,7 @@ export interface IIs {
   bigint: TypeGuardA<bigint>
   bool: TypeGuardA<boolean>
   char: Predicate
+  falsy: Predicate
   float: Predicate
   fun: TypeGuardA<Function>
   int: Predicate
@@ -80,6 +85,7 @@ export interface IIs {
   obj: TypeGuardA<object>
   str: TypeGuardA<string>
   sym: TypeGuardA<symbol>
+  truthy: Predicate
   undef: TypeGuardA<undefined>
 
   empty: {

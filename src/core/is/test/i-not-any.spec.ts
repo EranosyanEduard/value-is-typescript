@@ -50,6 +50,18 @@ describe('Тест интерфейса not.any при использовани�
     })
   })
 
+  describe('Тест интерфейса falsy', () => {
+    it('Аргумент: [1, -1, "a", [], [], console.log], результат: true', () => {
+      assert.isTrue(is.not.any.falsy([1, -1, 'a', [], {}, console.log]))
+    })
+    it('Аргумент: [1, -1, "a", [], [], null], результат: false', () => {
+      assert.isFalse(is.not.any.falsy([1, -1, 'a', [], {}, null]))
+    })
+    it('Аргумент: [], результат: true', () => {
+      assert.isTrue(is.not.any.falsy([]))
+    })
+  })
+
   describe('Тест интерфейса float', () => {
     it('Аргумент: [number, float, nan], результат: false', () => {
       assert.isFalse(is.not.any.float([1, 2.5, NaN]))
@@ -173,6 +185,18 @@ describe('Тест интерфейса not.any при использовани�
     })
     it('Аргумент: [], результат: true', () => {
       assert.isTrue(is.not.any.sym([]))
+    })
+  })
+
+  describe('Тест интерфейса truthy', () => {
+    it('Аргумент: [0, NaN, "", null, undefined], результат: true', () => {
+      assert.isTrue(is.not.any.truthy([0, '', null, undefined]))
+    })
+    it('Аргумент: [0, NaN, "a", null, undefined], результат: false', () => {
+      assert.isFalse(is.not.any.truthy([0, NaN, 'a', null, undefined]))
+    })
+    it('Аргумент: [], результат: true', () => {
+      assert.isTrue(is.not.any.truthy([]))
     })
   })
 
