@@ -9,6 +9,9 @@ describe('Тест интерфейса all.empty', () => {
     it('Аргумент: [[], [0], []], результат: false', () => {
       assert.isFalse(is.all.empty.arr([[], [0], []]))
     })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.all.empty.arr([]))
+    })
   })
 
   describe('Тест интерфейса obj', () => {
@@ -21,6 +24,9 @@ describe('Тест интерфейса all.empty', () => {
     it('Аргумент: [{}, { id: 0 }, {}], результат: false', () => {
       assert.isFalse(is.all.empty.obj([{}, { id: 0 }, {}]))
     })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.all.empty.obj([]))
+    })
   })
 
   describe('Тест интерфейса str', () => {
@@ -29,6 +35,9 @@ describe('Тест интерфейса all.empty', () => {
     })
     it('Аргумент: ["", "Hello, world!", ""], результат: false', () => {
       assert.isFalse(is.all.empty.str(['', 'Hello, world!', '']))
+    })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.all.empty.str([]))
     })
   })
 })

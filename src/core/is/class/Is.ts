@@ -113,14 +113,33 @@ class Is implements Record<Keys, Predicate> {
     let result: ReturnType<typeof check>
 
     if (Array.isArray(val)) {
+      let action: 'every' | 'some' | ''
+
       if (this.#all) {
-        result = val.length > 0 ? val.every(check) : false
+        action = 'every'
         this.#all = false
       } else if (this.#any) {
-        result = val.length > 0 ? val.some(check) : false
+        action = 'some'
         this.#any = false
       } else {
-        result = check(val)
+        action = ''
+      }
+
+      switch (action) {
+        case 'every':
+        case 'some': {
+          const isEmpty = val.length === 0
+
+          if (isEmpty) {
+            result = false
+            this.#not = false
+          } else {
+            result = val[action](check)
+          }
+          break
+        }
+        default:
+          result = check(val)
       }
     } else {
       result = check(val)
