@@ -1,1 +1,1 @@
-# value-is-typescript
+# is
