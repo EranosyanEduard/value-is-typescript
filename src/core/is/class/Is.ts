@@ -7,8 +7,14 @@ class Is implements Record<Keys, Predicate> {
     arr: (v: unknown[] | unknown[][]): boolean => {
       return this.#check(emptyChecker, 'ARR', v)
     },
+    map: (v: Map<unknown, unknown> | Array<Map<unknown, unknown>>): boolean => {
+      return this.#check(emptyChecker, 'MAP', v)
+    },
     obj: (v: object | object[]): boolean => {
       return this.#check(emptyChecker, 'object', v)
+    },
+    set: (v: Set<unknown> | Array<Set<unknown>>): boolean => {
+      return this.#check(emptyChecker, 'SET', v)
     },
     str: (v: string | string[]): boolean => {
       return this.#check(emptyChecker, 'string', v)
@@ -50,6 +56,10 @@ class Is implements Record<Keys, Predicate> {
     return this.#check(typeChecker, 'CHAR', v)
   }
 
+  err(v: unknown): boolean {
+    return this.#check(typeChecker, 'ERR', v)
+  }
+
   falsy(v: unknown): boolean {
     return this.#check(typeChecker, 'FALSY', v)
   }
@@ -64,6 +74,10 @@ class Is implements Record<Keys, Predicate> {
 
   int(v: unknown): boolean {
     return this.#check(typeChecker, 'INT', v)
+  }
+
+  map(v: unknown): boolean {
+    return this.#check(typeChecker, 'MAP', v)
   }
 
   nan(v: unknown): boolean {
@@ -84,6 +98,10 @@ class Is implements Record<Keys, Predicate> {
 
   obj(v: unknown): boolean {
     return this.#check(typeChecker, 'object', v)
+  }
+
+  set(v: unknown): boolean {
+    return this.#check(typeChecker, 'SET', v)
   }
 
   str(v: unknown): boolean {

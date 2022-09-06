@@ -137,6 +137,42 @@ describe('Тест интерфейса not при использовании о
     })
   })
 
+  describe('Тест интерфейса err', () => {
+    it('Аргумент: array, результат: true', () => {
+      assert.isTrue(is.not.err([]))
+    })
+    it('Аргумент: bigint, результат: true', () => {
+      assert.isTrue(is.not.err(BigInt('')))
+    })
+    it('Аргумент: boolean, результат: true', () => {
+      assert.isTrue(is.not.err(true))
+    })
+    it('Аргумент: err, результат: false', () => {
+      assert.isFalse(is.not.err(new Error()))
+    })
+    it('Аргумент: function, результат: true', () => {
+      assert.isTrue(is.not.err(() => {}))
+    })
+    it('Аргумент: null, результат: true', () => {
+      assert.isTrue(is.not.err(null))
+    })
+    it('Аргумент: number, результат: true', () => {
+      assert.isTrue(is.not.err(0))
+    })
+    it('Аргумент: object, результат: true', () => {
+      assert.isTrue(is.not.err({}))
+    })
+    it('Аргумент: string, результат: true', () => {
+      assert.isTrue(is.not.err(''))
+    })
+    it('Аргумент: symbol, результат: true', () => {
+      assert.isTrue(is.not.err(Symbol('')))
+    })
+    it('Аргумент: undefined, результат: true', () => {
+      assert.isTrue(is.not.err(undefined))
+    })
+  })
+
   describe('Тест интерфейса falsy', () => {
     it('Аргумент: array, результат: true', () => {
       assert.isTrue(is.not.falsy([]))
@@ -272,6 +308,42 @@ describe('Тест интерфейса not при использовании о
     })
     it('Аргумент: undefined, результат: true', () => {
       assert.isTrue(is.not.int(undefined))
+    })
+  })
+
+  describe('Тест интерфейса map', () => {
+    it('Аргумент: array, результат: true', () => {
+      assert.isTrue(is.not.map([]))
+    })
+    it('Аргумент: bigint, результат: true', () => {
+      assert.isTrue(is.not.map(BigInt('')))
+    })
+    it('Аргумент: boolean, результат: true', () => {
+      assert.isTrue(is.not.map(true))
+    })
+    it('Аргумент: function, результат: true', () => {
+      assert.isTrue(is.not.map(console.log))
+    })
+    it('Аргумент: map, результат: false', () => {
+      assert.isFalse(is.not.map(new Map()))
+    })
+    it('Аргумент: null, результат: true', () => {
+      assert.isTrue(is.not.map(null))
+    })
+    it('Аргумент: number, результат: true', () => {
+      assert.isTrue(is.not.map(0))
+    })
+    it('Аргумент: object, результат: true', () => {
+      assert.isTrue(is.not.map({}))
+    })
+    it('Аргумент: string, результат: true', () => {
+      assert.isTrue(is.not.map(''))
+    })
+    it('Аргумент: symbol, результат: true', () => {
+      assert.isTrue(is.not.map(Symbol('')))
+    })
+    it('Аргумент: undefined, результат: true', () => {
+      assert.isTrue(is.not.map(undefined))
     })
   })
 
@@ -440,6 +512,42 @@ describe('Тест интерфейса not при использовании о
     })
     it('Аргумент: undefined, результат: true', () => {
       assert.isTrue(is.not.obj(undefined))
+    })
+  })
+
+  describe('Тест интерфейса set', () => {
+    it('Аргумент: array, результат: true', () => {
+      assert.isTrue(is.not.set([]))
+    })
+    it('Аргумент: bigint, результат: true', () => {
+      assert.isTrue(is.not.set(BigInt('')))
+    })
+    it('Аргумент: boolean, результат: true', () => {
+      assert.isTrue(is.not.set(true))
+    })
+    it('Аргумент: function, результат: true', () => {
+      assert.isTrue(is.not.set(console.log))
+    })
+    it('Аргумент: null, результат: true', () => {
+      assert.isTrue(is.not.set(null))
+    })
+    it('Аргумент: number, результат: true', () => {
+      assert.isTrue(is.not.set(0))
+    })
+    it('Аргумент: object, результат: true', () => {
+      assert.isTrue(is.not.set({}))
+    })
+    it('Аргумент: set, результат: false', () => {
+      assert.isFalse(is.not.set(new Set()))
+    })
+    it('Аргумент: string, результат: true', () => {
+      assert.isTrue(is.not.set(''))
+    })
+    it('Аргумент: symbol, результат: true', () => {
+      assert.isTrue(is.not.set(Symbol('')))
+    })
+    it('Аргумент: undefined, результат: true', () => {
+      assert.isTrue(is.not.set(undefined))
     })
   })
 

@@ -14,6 +14,30 @@ describe('Тест интерфейса not при использовании и
     })
   })
 
+  describe('Тест интерфейса map', () => {
+    it('Аргумент: [new Map([[0, "a"]]), new Map(), new Map([[1, "b"]])], результат: false', () => {
+      assert.isFalse(
+        is.not.any.empty.map([
+          new Map([[0, 'a']]),
+          new Map(),
+          new Map([[1, 'b']])
+        ])
+      )
+    })
+    it('Аргумент: [new Map([[0, "a"]]), new Map([[1, "b"]]), new Map([[2, "c"]])], результат: true', () => {
+      assert.isTrue(
+        is.not.any.empty.map([
+          new Map([[0, 'a']]),
+          new Map([[1, 'b']]),
+          new Map([[2, 'c']])
+        ])
+      )
+    })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.not.any.empty.map([]))
+    })
+  })
+
   describe('Тест интерфейса obj', () => {
     it('Аргумент: [{ id: 0 }, is, {}], результат: false', () => {
       assert.isFalse(is.not.any.empty.obj([{ id: 0 }, is, {}]))
@@ -26,6 +50,22 @@ describe('Тест интерфейса not при использовании и
     })
     it('Аргумент: [], результат: false', () => {
       assert.isFalse(is.not.any.empty.obj([]))
+    })
+  })
+
+  describe('Тест интерфейса set', () => {
+    it('Аргумент: [new Set([0]), new Set(), new Set([1])], результат: false', () => {
+      assert.isFalse(
+        is.not.any.empty.set([new Set([0]), new Set(), new Set([1])])
+      )
+    })
+    it('Аргумент: [new Set([0]), new Set([1]), new Set([2])], результат: true', () => {
+      assert.isTrue(
+        is.not.any.empty.set([new Set([0]), new Set([1]), new Set([2])])
+      )
+    })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.not.any.empty.set([]))
     })
   })
 

@@ -137,6 +137,42 @@ describe('Тест основных интерфейсов, исключая all
     })
   })
 
+  describe('Тест интерфейса err', () => {
+    it('Аргумент: array, результат: false', () => {
+      assert.isFalse(is.err([]))
+    })
+    it('Аргумент: bigint, результат: false', () => {
+      assert.isFalse(is.err(BigInt('')))
+    })
+    it('Аргумент: boolean, результат: false', () => {
+      assert.isFalse(is.err(true))
+    })
+    it('Аргумент: err, результат: true', () => {
+      assert.isTrue(is.err(new Error()))
+    })
+    it('Аргумент: function, результат: false', () => {
+      assert.isFalse(is.err(() => {}))
+    })
+    it('Аргумент: null, результат: false', () => {
+      assert.isFalse(is.err(null))
+    })
+    it('Аргумент: number, результат: false', () => {
+      assert.isFalse(is.err(0))
+    })
+    it('Аргумент: object, результат: false', () => {
+      assert.isFalse(is.err({}))
+    })
+    it('Аргумент: string, результат: false', () => {
+      assert.isFalse(is.err(''))
+    })
+    it('Аргумент: symbol, результат: false', () => {
+      assert.isFalse(is.err(Symbol('')))
+    })
+    it('Аргумент: undefined, результат: false', () => {
+      assert.isFalse(is.err(undefined))
+    })
+  })
+
   describe('Тест интерфейса falsy', () => {
     it('Аргумент: array, результат: false', () => {
       assert.isFalse(is.falsy([]))
@@ -272,6 +308,42 @@ describe('Тест основных интерфейсов, исключая all
     })
     it('Аргумент: undefined, результат: false', () => {
       assert.isFalse(is.int(undefined))
+    })
+  })
+
+  describe('Тест интерфейса map', () => {
+    it('Аргумент: array, результат: false', () => {
+      assert.isFalse(is.map([]))
+    })
+    it('Аргумент: bigint, результат: false', () => {
+      assert.isFalse(is.map(BigInt('')))
+    })
+    it('Аргумент: boolean, результат: false', () => {
+      assert.isFalse(is.map(true))
+    })
+    it('Аргумент: function, результат: false', () => {
+      assert.isFalse(is.map(console.log))
+    })
+    it('Аргумент: map, результат: true', () => {
+      assert.isTrue(is.map(new Map()))
+    })
+    it('Аргумент: null, результат: false', () => {
+      assert.isFalse(is.map(null))
+    })
+    it('Аргумент: number, результат: false', () => {
+      assert.isFalse(is.map(0))
+    })
+    it('Аргумент: object, результат: false', () => {
+      assert.isFalse(is.map({}))
+    })
+    it('Аргумент: string, результат: false', () => {
+      assert.isFalse(is.map(''))
+    })
+    it('Аргумент: symbol, результат: false', () => {
+      assert.isFalse(is.map(Symbol('')))
+    })
+    it('Аргумент: undefined, результат: false', () => {
+      assert.isFalse(is.map(undefined))
     })
   })
 
@@ -440,6 +512,42 @@ describe('Тест основных интерфейсов, исключая all
     })
     it('Аргумент: undefined, результат: false', () => {
       assert.isFalse(is.obj(undefined))
+    })
+  })
+
+  describe('Тест интерфейса set', () => {
+    it('Аргумент: array, результат: false', () => {
+      assert.isFalse(is.set([]))
+    })
+    it('Аргумент: bigint, результат: false', () => {
+      assert.isFalse(is.set(BigInt('')))
+    })
+    it('Аргумент: boolean, результат: false', () => {
+      assert.isFalse(is.set(true))
+    })
+    it('Аргумент: function, результат: false', () => {
+      assert.isFalse(is.set(console.log))
+    })
+    it('Аргумент: null, результат: false', () => {
+      assert.isFalse(is.set(null))
+    })
+    it('Аргумент: number, результат: false', () => {
+      assert.isFalse(is.set(0))
+    })
+    it('Аргумент: object, результат: false', () => {
+      assert.isFalse(is.set({}))
+    })
+    it('Аргумент: set, результат: true', () => {
+      assert.isTrue(is.set(new Set()))
+    })
+    it('Аргумент: string, результат: false', () => {
+      assert.isFalse(is.set(''))
+    })
+    it('Аргумент: symbol, результат: false', () => {
+      assert.isFalse(is.set(Symbol('')))
+    })
+    it('Аргумент: undefined, результат: false', () => {
+      assert.isFalse(is.set(undefined))
     })
   })
 

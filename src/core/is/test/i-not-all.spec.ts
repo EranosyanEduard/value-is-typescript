@@ -50,6 +50,18 @@ describe('Тест интерфейса not.all при использовани�
     })
   })
 
+  describe('Тест интерфейса err', () => {
+    it('Аргумент: [err, err, err], результат: false', () => {
+      assert.isFalse(is.not.all.err([new Error(), new Error(), new Error()]))
+    })
+    it('Аргумент: [err, err, null], результат: true', () => {
+      assert.isTrue(is.not.all.err([new Error(), new Error(), null]))
+    })
+    it('Аргумент: [], результат: true', () => {
+      assert.isFalse(is.not.all.err([]))
+    })
+  })
+
   describe('Тест интерфейса falsy', () => {
     it('Аргумент: [0, nan, "a", null, undefined], результат: true', () => {
       assert.isTrue(is.not.all.falsy([0, NaN, 'a', null, undefined]))
@@ -95,6 +107,18 @@ describe('Тест интерфейса not.all при использовани�
     })
     it('Аргумент: [], результат: false', () => {
       assert.isFalse(is.not.all.int([]))
+    })
+  })
+
+  describe('Тест интерфейса map', () => {
+    it('Аргумент: [map, map, map], результат: false', () => {
+      assert.isFalse(is.not.all.map([new Map(), new Map(), new Map()]))
+    })
+    it('Аргумент: [map, map, null], результат: true', () => {
+      assert.isTrue(is.not.all.map([new Map(), new Map(), null]))
+    })
+    it('Аргумент: [], результат: true', () => {
+      assert.isFalse(is.not.all.map([]))
     })
   })
 
@@ -155,6 +179,18 @@ describe('Тест интерфейса not.all при использовани�
     })
     it('Аргумент: [], результат: false', () => {
       assert.isFalse(is.not.all.obj([]))
+    })
+  })
+
+  describe('Тест интерфейса set', () => {
+    it('Аргумент: [set, set, set], результат: false', () => {
+      assert.isFalse(is.not.all.set([new Set(), new Set(), new Set()]))
+    })
+    it('Аргумент: [set, set, null], результат: true', () => {
+      assert.isTrue(is.not.all.set([new Set(), new Set(), null]))
+    })
+    it('Аргумент: [], результат: true', () => {
+      assert.isFalse(is.not.all.set([]))
     })
   })
 

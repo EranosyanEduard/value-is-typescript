@@ -7,6 +7,8 @@ export default new Checker(TypeList, (checkerKey) => {
       return (v) => Array.isArray(v)
     case 'CHAR':
       return (v) => typeof v === 'string' && v.length === 1
+    case 'ERR':
+      return (v) => v instanceof Error
     case 'FALSY':
       // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       return (v) => !v
@@ -15,6 +17,8 @@ export default new Checker(TypeList, (checkerKey) => {
         typeof v === 'number' && Number.isFinite(v) && !Number.isInteger(v)
     case 'INT':
       return (v) => Number.isInteger(v)
+    case 'MAP':
+      return (v) => v instanceof Map
     case 'NAN':
       return (v) => Number.isNaN(v)
     case 'NULL':
@@ -23,6 +27,8 @@ export default new Checker(TypeList, (checkerKey) => {
       return (v) => v === null || v === undefined
     case 'object':
       return (v) => typeof v === 'object' && v !== null
+    case 'SET':
+      return (v) => v instanceof Set
     case 'TRUTHY':
       // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       return (v) => !!v

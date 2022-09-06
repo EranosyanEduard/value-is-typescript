@@ -50,6 +50,18 @@ describe('Тест интерфейса not.any при использовани�
     })
   })
 
+  describe('Тест интерфейса err', () => {
+    it('Аргумент: [number, err, string], результат: false', () => {
+      assert.isFalse(is.not.any.err([0, new Error(), '']))
+    })
+    it('Аргумент: [number, array, string], результат: true', () => {
+      assert.isTrue(is.not.any.err([0, [], '']))
+    })
+    it('Аргумент: [], результат: true', () => {
+      assert.isFalse(is.not.any.err([]))
+    })
+  })
+
   describe('Тест интерфейса falsy', () => {
     it('Аргумент: [1, -1, "a", [], [], console.log], результат: true', () => {
       assert.isTrue(is.not.any.falsy([1, -1, 'a', [], {}, console.log]))
@@ -95,6 +107,18 @@ describe('Тест интерфейса not.any при использовани�
     })
     it('Аргумент: [], результат: false', () => {
       assert.isFalse(is.not.any.int([]))
+    })
+  })
+
+  describe('Тест интерфейса map', () => {
+    it('Аргумент: [number, map, string], результат: false', () => {
+      assert.isFalse(is.not.any.map([0, new Map(), '']))
+    })
+    it('Аргумент: [number, array, string], результат: true', () => {
+      assert.isTrue(is.not.any.map([0, [], '']))
+    })
+    it('Аргумент: [], результат: true', () => {
+      assert.isFalse(is.not.any.map([]))
     })
   })
 
@@ -161,6 +185,18 @@ describe('Тест интерфейса not.any при использовани�
     })
     it('Аргумент: [], результат: false', () => {
       assert.isFalse(is.not.any.obj([]))
+    })
+  })
+
+  describe('Тест интерфейса set', () => {
+    it('Аргумент: [number, set, string], результат: false', () => {
+      assert.isFalse(is.not.any.set([0, new Set(), '']))
+    })
+    it('Аргумент: [number, array, string], результат: true', () => {
+      assert.isTrue(is.not.any.set([0, [], '']))
+    })
+    it('Аргумент: [], результат: true', () => {
+      assert.isFalse(is.not.any.set([]))
     })
   })
 
