@@ -118,19 +118,19 @@ false
 false
 > is.not.any.arr([ {}, '', 22 ]);
 true
-> is.not.any.arr();
+> is.not.any.arr([]);
 false
 
-> is.any.empty.arr([ {}, '', [] ]);
+> is.any.empty.arr([ [''], [], [22] ]);
 true
-> is.any.empty.arr([ {}, '', 22 ]);
+> is.any.empty.arr([ [''], [true], [22] ]);
 false
 > is.any.empty.arr([]);
 false
 
-> is.not.any.empty.arr([ {}, '', [] ]);
+> is.not.any.empty.arr([ [''], [], [22] ]);
 false
-> is.not.any.empty.arr([ {}, '', 22 ]);
+> is.not.any.empty.arr([ [''], [true], [22] ]);
 true
 > is.not.any.empty.arr([]);
 false
@@ -937,5 +937,501 @@ false
 > is.not.any.num([ {}, true, '' ]);
 true
 > is.not.any.num([]);
+false
+```
+
+## **is.obj**
+
+### Interface
+
+```ts
+interface is {
+    obj: (arg: unknown) => arg is object
+
+    all: {
+        obj: (arg: unknown[]) => arg is object[]
+
+        empty: {
+            obj: (arg: object[]) => boolean
+        }
+    }
+
+    any: {
+        obj: (arg: unknown[]) => boolean
+
+        empty: {
+            obj: (arg: object[]) => boolean
+        }
+    }
+
+    empty: {
+        obj: (arg: object) => boolean
+    }
+
+    not: {
+        obj: (arg: unknown) => boolean
+
+        all: {
+            obj: (arg: unknown[]) => boolean
+
+            empty: {
+                obj: (arg: object[]) => boolean
+            }
+        }
+
+        any: {
+            obj: (arg: unknown[]) => boolean
+
+            empty: {
+                obj: (arg: object[]) => boolean
+            }
+        }
+
+        empty: {
+            obj: (arg: object) => boolean
+        }
+    }
+}
+```
+
+### Example
+
+```ts
+> is.obj([]);
+true
+> is.obj({});
+true
+> is.obj('');
+false
+
+> is.not.obj([]);
+false
+> is.not.obj({});
+false
+> is.not.obj('');
+true
+
+> is.empty.obj([]);
+true
+> is.empty.obj({});
+true
+> is.empty.obj([0]);
+false
+> is.empty.obj({ id: 0 });
+false
+
+> is.not.empty.obj([]);
+false
+> is.not.empty.obj({});
+false
+> is.not.empty.obj([0]);
+true
+> is.not.empty.obj({ id: 0 });
+true
+
+> is.all.obj([ {}, [], {} ]);
+true
+> is.all.obj([ {}, [], '' ]);
+false
+> is.all.obj([]);
+false
+
+> is.not.all.obj([ {}, [], {} ]);
+false
+> is.not.all.obj([ {}, [], '' ]);
+true
+> is.not.all.obj([]);
+false
+
+> is.all.empty.obj([ {}, [], {} ]);
+true
+> is.all.empty.obj([ {}, [''], {} ]);
+false
+> is.all.empty.obj([]);
+false
+
+> is.not.all.empty.obj([ {}, [], {} ]);
+false
+> is.not.all.empty.obj([ {}, [''], {} ]);
+true
+> is.not.all.empty.obj([]);
+false
+
+> is.any.obj([ '', {}, 22 ]);
+true
+> is.any.obj([ '', true, 22 ]);
+false
+> is.any.obj([]);
+false
+
+> is.not.any.obj([ '', {}, 22 ]);
+false
+> is.not.any.obj([ '', true, 22 ]);
+true
+> is.not.any.obj([]);
+false
+
+> is.any.empty.obj([ is, {}, [22] ]);
+true
+> is.any.empty.obj([ is, { id: 22 }, [22] ]);
+false
+> is.any.empty.obj([]);
+false
+
+> is.not.any.empty.obj([ is, {}, [22] ]);
+false
+> is.not.any.empty.obj([ is, { id: 22 }, [22] ]);
+true
+> is.not.any.empty.obj([]);
+false
+```
+
+## **is.str**
+
+### Interface
+
+```ts
+interface is {
+    str: (arg: unknown) => arg is string
+
+    all: {
+        str: (arg: unknown[]) => arg is string[]
+
+        empty: {
+            str: (arg: string[]) => boolean
+        }
+    }
+
+    any: {
+        str: (arg: unknown[]) => boolean
+
+        empty: {
+            str: (arg: string[]) => boolean
+        }
+    }
+
+    empty: {
+        str: (arg: string) => boolean
+    }
+
+    not: {
+        str: (arg: unknown) => boolean
+
+        all: {
+            str: (arg: unknown[]) => boolean
+
+            empty: {
+                str: (arg: string[]) => boolean
+            }
+        }
+
+        any: {
+            str: (arg: unknown[]) => boolean
+
+            empty: {
+                str: (arg: string[]) => boolean
+            }
+        }
+
+        empty: {
+            str: (arg: string) => boolean
+        }
+    }
+}
+```
+
+### Example
+
+```ts
+> is.str('');
+true
+> is.str([]);
+false
+
+> is.not.str('');
+false
+> is.not.str([]);
+true
+
+> is.empty.str('');
+true
+> is.empty.str('a');
+false
+
+> is.not.empty.str('');
+false
+> is.not.empty.str('a');
+true
+
+> is.all.str([ '', '', '' ]);
+true
+> is.all.str([ '', '', [] ]);
+false
+> is.all.str([]);
+false
+
+> is.not.all.str([ '', '', '' ]);
+false
+> is.not.all.str([ '', '', [] ]);
+true
+> is.not.all.str([]);
+false
+
+> is.all.empty.str([ '', '', '' ]);
+true
+> is.all.empty.str([ '', 'a', '' ]);
+false
+> is.all.empty.str([]);
+false
+
+> is.not.all.empty.str([ '', '', '' ]);
+false
+> is.not.all.empty.str([ '', 'a', '' ]);
+true
+> is.not.all.empty.str([]);
+false
+
+> is.any.str([ {}, '', [] ]);
+true
+> is.any.str([ {}, true, 22 ]);
+false
+> is.any.str([]);
+false
+
+> is.not.any.str([ {}, '', [] ]);
+false
+> is.not.any.str([ {}, true, 22 ]);
+true
+> is.not.any.str([]);
+false
+
+> is.any.empty.str([ 'a', '', 'b' ]);
+true
+> is.any.empty.str([ 'a', '_', 'b' ]);
+false
+> is.any.empty.str([]);
+false
+
+> is.not.any.empty.str([ 'a', '', 'b' ]);
+false
+> is.not.any.empty.str([ 'a', '_', 'b' ]);
+true
+> is.not.any.empty.str([]);
+false
+```
+
+## **is.sym**
+
+### Interface
+
+```ts
+interface is {
+    sym: (arg: unknown) => arg is symbol
+
+    all: {
+        sym: (arg: unknown[]) => arg is symbol[]
+    }
+
+    any: {
+        sym: (arg: unknown[]) => boolean
+    }
+
+    not: {
+        sym: (arg: unknown) => boolean
+
+        all: {
+            sym: (arg: unknown[]) => boolean
+        }
+
+        any: {
+            sym: (arg: unknown[]) => boolean
+        }
+    }
+}
+```
+
+### Example
+
+```ts
+> is.sym(Symbol(''));
+true
+> is.sym('');
+false
+
+> is.not.sym(Symbol(''));
+false
+> is.not.sym('');
+true
+
+> is.all.sym([ Symbol(''), Symbol(''), Symbol('') ]);
+true
+> is.all.sym([ Symbol(''), Symbol(''), '' ]);
+false
+> is.all.sym([]);
+false
+
+> is.not.all.sym([ Symbol(''), Symbol(''), Symbol('') ]);
+false
+> is.not.all.sym([ Symbol(''), Symbol(''), '' ]);
+true
+> is.not.all.sym([]);
+false
+
+> is.any.sym([ {}, Symbol(''), '' ]);
+true
+> is.any.sym([ {}, 22, '' ]);
+false
+> is.any.sym([]);
+false
+
+> is.not.any.sym([ {}, Symbol(''), '' ]);
+false
+> is.not.any.sym([ {}, 22, '' ]);
+true
+> is.not.any.sym([]);
+false
+```
+
+## **is.truthy**
+
+### Interface
+
+```ts
+interface is {
+    truthy: (arg: unknown) => boolean
+
+    all: {
+        truthy: (arg: unknown[]) => boolean
+    }
+
+    any: {
+        truthy: (arg: unknown[]) => boolean
+    }
+
+    not: {
+        truthy: (arg: unknown) => boolean
+
+        all: {
+            truthy: (arg: unknown[]) => boolean
+        }
+
+        any: {
+            truthy: (arg: unknown[]) => boolean
+        }
+    }
+}
+```
+
+### Example
+
+```ts
+> is.truthy('a');
+true
+> is.truthy('');
+false
+
+> is.not.truthy('a');
+false
+> is.not.truthy('');
+true
+
+> is.all.truthy([ true, 1, 'a', [], {}, () => {} ]);
+true
+> is.all.truthy([ true, 0, 'a', [], {}, () => {} ]);
+false
+> is.all.truthy([]);
+false
+
+> is.not.all.truthy([ true, 1, 'a', [], {}, () => {} ]);
+false
+> is.not.all.truthy([ true, 0, 'a', [], {}, () => {} ]);
+true
+> is.not.all.truthy([]);
+false
+
+> is.any.truthy([ false, 0, '', null, undefined, [] ]);
+true
+> is.any.truthy([ false, 0, '', null, undefined ]);
+false
+> is.any.truthy([]);
+false
+
+> is.not.any.truthy([ false, 0, '', null, undefined, [] ]);
+false
+> is.not.any.truthy([ false, 0, '', null, undefined ]);
+true
+> is.not.any.truthy([]);
+false
+```
+
+## **is.undef**
+
+### Interface
+
+```ts
+interface is {
+    undef: (arg: unknown) => arg is undefined
+
+    all: {
+        undef: (arg: unknown[]) => arg is undefined[]
+    }
+
+    any: {
+        undef: (arg: unknown[]) => boolean
+    }
+
+    not: {
+        undef: (arg: unknown) => boolean
+
+        all: {
+            undef: (arg: unknown[]) => boolean
+        }
+
+        any: {
+            undef: (arg: unknown[]) => boolean
+        }
+    }
+}
+```
+
+### Example
+
+```ts
+> is.undef(undefined);
+true
+> is.undef('');
+false
+
+> is.not.undef(undefined);
+false
+> is.not.undef('');
+true
+
+> is.all.undef([ undefined, undefined, undefined ]);
+true
+> is.all.undef([ undefined, undefined, '' ]);
+false
+> is.all.undef([]);
+false
+
+> is.not.all.undef([ undefined, undefined, undefined ]);
+false
+> is.not.all.undef([ undefined, undefined, '' ]);
+true
+> is.not.all.undef([]);
+false
+
+> is.any.undef([ {}, undefined, '' ]);
+true
+> is.any.undef([ {}, 22, '' ]);
+false
+> is.any.undef([]);
+false
+
+> is.not.any.undef([ {}, undefined, '' ]);
+false
+> is.not.any.undef([ {}, 22, '' ]);
+true
+> is.not.any.undef([]);
 false
 ```
