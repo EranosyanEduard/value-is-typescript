@@ -1,6 +1,7 @@
 # is
 
 "Is" is micro check library written with typescript.
+[npm](https://www.npmjs.com/package/relax-is/access).
 
 ## **is.arr**
 
