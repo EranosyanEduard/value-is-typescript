@@ -1,4 +1,9 @@
-import { Predicate, TypeGuardA, TypeGuardB } from '../../../models'
+import {
+  type Predicate,
+  type TypeGuardA,
+  type TypeGuardB,
+  type TypeGuardC
+} from '../../../models'
 
 /**
  * @description
@@ -74,7 +79,28 @@ interface All {
 export interface IIs {
   all: All & Pick<AllAndAny, 'empty'>
   any: AllAndAny
-  not: Record<Keys, Predicate> & {
+  not: {
+    arr: TypeGuardC<any[]>
+    bigint: TypeGuardC<bigint>
+    bool: TypeGuardC<boolean>
+    char: Predicate
+    err: TypeGuardC<Error>
+    falsy: Predicate
+    float: Predicate
+    fun: TypeGuardC<(...args: any) => any>
+    int: Predicate
+    map: TypeGuardC<Map<any, any>>
+    nan: Predicate
+    null: TypeGuardC<null>
+    nullable: TypeGuardC<null | undefined>
+    num: TypeGuardC<number>
+    obj: TypeGuardC<object>
+    set: TypeGuardC<Set<any>>
+    str: TypeGuardC<string>
+    sym: TypeGuardC<symbol>
+    truthy: Predicate
+    undef: TypeGuardC<undefined>
+  } & {
     all: AllAndAny
     any: AllAndAny
     empty: IIs['empty']
