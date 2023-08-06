@@ -14,6 +14,7 @@ export type Keys =
   | 'bigint'
   | 'bool'
   | 'char'
+  | 'date'
   | 'err'
   | 'falsy'
   | 'float'
@@ -25,6 +26,7 @@ export type Keys =
   | 'nullable'
   | 'num'
   | 'obj'
+  | 'regexp'
   | 'set'
   | 'str'
   | 'sym'
@@ -54,6 +56,7 @@ interface All {
   bigint: TypeGuardB<bigint>
   bool: TypeGuardB<boolean>
   char: Predicate<unknown[]>
+  date: TypeGuardB<Date[]>
   err: TypeGuardB<Error>
   falsy: Predicate<unknown[]>
   float: Predicate<unknown[]>
@@ -65,6 +68,7 @@ interface All {
   nullable: TypeGuardB<Array<null | undefined>>
   num: TypeGuardB<number>
   obj: TypeGuardB<object>
+  regexp: TypeGuardB<RegExp[]>
   set: TypeGuardB<Set<unknown>>
   str: TypeGuardB<string>
   sym: TypeGuardB<symbol>
@@ -84,6 +88,7 @@ export interface IIs {
     bigint: TypeGuardC<bigint>
     bool: TypeGuardC<boolean>
     char: Predicate
+    date: TypeGuardC<Date>
     err: TypeGuardC<Error>
     falsy: Predicate
     float: Predicate
@@ -95,6 +100,7 @@ export interface IIs {
     nullable: TypeGuardC<null | undefined>
     num: TypeGuardC<number>
     obj: TypeGuardC<object>
+    regexp: TypeGuardC<RegExp>
     set: TypeGuardC<Set<any>>
     str: TypeGuardC<string>
     sym: TypeGuardC<symbol>
@@ -110,6 +116,7 @@ export interface IIs {
   bigint: TypeGuardA<bigint>
   bool: TypeGuardA<boolean>
   char: Predicate
+  date: TypeGuardA<Date>
   err: TypeGuardA<Error>
   falsy: Predicate
   float: Predicate
@@ -121,6 +128,7 @@ export interface IIs {
   nullable: TypeGuardA<null | undefined>
   num: TypeGuardA<number>
   obj: TypeGuardA<object>
+  regexp: TypeGuardA<RegExp>
   set: TypeGuardA<Set<unknown>>
   str: TypeGuardA<string>
   sym: TypeGuardA<symbol>

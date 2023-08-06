@@ -50,6 +50,18 @@ describe('Тест интерфейса not.any при использовани�
     })
   })
 
+  describe('Тест интерфейса date', () => {
+    it('Аргумент: [number, date, string], результат: false', () => {
+      assert.isFalse(is.not.any.date([1, new Date(), 'c']))
+    })
+    it('Аргумент: [number, array, string], результат: true', () => {
+      assert.isTrue(is.not.any.date([1, [], '']))
+    })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.not.any.date([]))
+    })
+  })
+
   describe('Тест интерфейса err', () => {
     it('Аргумент: [number, err, string], результат: false', () => {
       assert.isFalse(is.not.any.err([0, new Error(), '']))
@@ -185,6 +197,18 @@ describe('Тест интерфейса not.any при использовани�
     })
     it('Аргумент: [], результат: false', () => {
       assert.isFalse(is.not.any.obj([]))
+    })
+  })
+
+  describe('Тест интерфейса regexp', () => {
+    it('Аргумент: [number, regexp, string], результат: false', () => {
+      assert.isFalse(is.not.any.regexp([1, /a/, 'c']))
+    })
+    it('Аргумент: [number, array, string], результат: true', () => {
+      assert.isTrue(is.not.any.regexp([1, [], '']))
+    })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.not.any.regexp([]))
     })
   })
 

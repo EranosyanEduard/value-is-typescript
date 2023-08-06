@@ -56,6 +56,10 @@ class Is implements Record<Keys, Predicate> {
     return this.#check(typeChecker, 'CHAR', v)
   }
 
+  date(v: unknown): boolean {
+    return this.#check(typeChecker, 'DATE', v)
+  }
+
   err(v: unknown): boolean {
     return this.#check(typeChecker, 'ERR', v)
   }
@@ -98,6 +102,10 @@ class Is implements Record<Keys, Predicate> {
 
   obj(v: unknown): boolean {
     return this.#check(typeChecker, 'object', v)
+  }
+
+  regexp(v: unknown): boolean {
+    return this.#check(typeChecker, 'REGEXP', v)
   }
 
   set(v: unknown): boolean {

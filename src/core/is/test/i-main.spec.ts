@@ -137,6 +137,42 @@ describe('Тест основных интерфейсов, исключая all
     })
   })
 
+  describe('Тест интерфейса date', () => {
+    it('Аргумент: array, результат: false', () => {
+      assert.isFalse(is.date([]))
+    })
+    it('Аргумент: bigint, результат: false', () => {
+      assert.isFalse(is.date(BigInt('')))
+    })
+    it('Аргумент: boolean, результат: false', () => {
+      assert.isFalse(is.date(true))
+    })
+    it('Аргумент: date, результат: true', () => {
+      assert.isTrue(is.date(new Date()))
+    })
+    it('Аргумент: function, результат: false', () => {
+      assert.isFalse(is.date(() => {}))
+    })
+    it('Аргумент: null, результат: false', () => {
+      assert.isFalse(is.date(null))
+    })
+    it('Аргумент: number, результат: false', () => {
+      assert.isFalse(is.date(0))
+    })
+    it('Аргумент: object, результат: false', () => {
+      assert.isFalse(is.date({}))
+    })
+    it('Аргумент: string, результат: false', () => {
+      assert.isFalse(is.date(''))
+    })
+    it('Аргумент: symbol, результат: false', () => {
+      assert.isFalse(is.date(Symbol('')))
+    })
+    it('Аргумент: undefined, результат: false', () => {
+      assert.isFalse(is.date(undefined))
+    })
+  })
+
   describe('Тест интерфейса err', () => {
     it('Аргумент: array, результат: false', () => {
       assert.isFalse(is.err([]))
@@ -512,6 +548,42 @@ describe('Тест основных интерфейсов, исключая all
     })
     it('Аргумент: undefined, результат: false', () => {
       assert.isFalse(is.obj(undefined))
+    })
+  })
+
+  describe('Тест интерфейса regexp', () => {
+    it('Аргумент: array, результат: false', () => {
+      assert.isFalse(is.regexp([]))
+    })
+    it('Аргумент: bigint, результат: false', () => {
+      assert.isFalse(is.regexp(BigInt('')))
+    })
+    it('Аргумент: boolean, результат: false', () => {
+      assert.isFalse(is.regexp(true))
+    })
+    it('Аргумент: function, результат: false', () => {
+      assert.isFalse(is.regexp(() => {}))
+    })
+    it('Аргумент: null, результат: false', () => {
+      assert.isFalse(is.regexp(null))
+    })
+    it('Аргумент: number, результат: false', () => {
+      assert.isFalse(is.regexp(0))
+    })
+    it('Аргумент: object, результат: false', () => {
+      assert.isFalse(is.regexp({}))
+    })
+    it('Аргумент: regexp, результат: true', () => {
+      assert.isTrue(is.regexp(/^\d+$/))
+    })
+    it('Аргумент: string, результат: false', () => {
+      assert.isFalse(is.regexp(''))
+    })
+    it('Аргумент: symbol, результат: false', () => {
+      assert.isFalse(is.regexp(Symbol('')))
+    })
+    it('Аргумент: undefined, результат: false', () => {
+      assert.isFalse(is.regexp(undefined))
     })
   })
 

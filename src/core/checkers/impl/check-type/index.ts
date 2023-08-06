@@ -7,6 +7,8 @@ export default new Checker(TypeList, (checkerKey) => {
       return (v) => Array.isArray(v)
     case 'CHAR':
       return (v) => typeof v === 'string' && v.length === 1
+    case 'DATE':
+      return (v) => v instanceof Date
     case 'ERR':
       return (v) => v instanceof Error
     case 'FALSY':
@@ -27,6 +29,8 @@ export default new Checker(TypeList, (checkerKey) => {
       return (v) => v === null || v === undefined
     case 'object':
       return (v) => typeof v === 'object' && v !== null
+    case 'REGEXP':
+      return (v) => v instanceof RegExp
     case 'SET':
       return (v) => v instanceof Set
     case 'TRUTHY':

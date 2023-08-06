@@ -50,6 +50,18 @@ describe('Тест интерфейса all при использовании о
     })
   })
 
+  describe('Тест интерфейса date', () => {
+    it('Аргумент: [date, date, date], результат: true', () => {
+      assert.isTrue(is.all.date([new Date(), new Date(), new Date()]))
+    })
+    it('Аргумент: [date, date, string], результат: false', () => {
+      assert.isFalse(is.all.date([new Date(), new Date(), '']))
+    })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.all.date([]))
+    })
+  })
+
   describe('Тест интерфейса err', () => {
     it('Аргумент: [error, error, error], результат: true', () => {
       assert.isTrue(is.all.err([new Error(), new Error(), new Error()]))
@@ -179,6 +191,18 @@ describe('Тест интерфейса all при использовании о
     })
     it('Аргумент: [], результат: false', () => {
       assert.isFalse(is.all.obj([]))
+    })
+  })
+
+  describe('Тест интерфейса regexp', () => {
+    it('Аргумент: [regexp, regexp, regexp], результат: true', () => {
+      assert.isTrue(is.all.regexp([/a/, /b/, /c/]))
+    })
+    it('Аргумент: [regexp, regexp, string], результат: false', () => {
+      assert.isFalse(is.all.regexp([/a/, /b/, '']))
+    })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.all.regexp([]))
     })
   })
 

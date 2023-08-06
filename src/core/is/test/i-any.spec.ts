@@ -50,6 +50,18 @@ describe('Тест интерфейса any при использовании о
     })
   })
 
+  describe('Тест интерфейса date', () => {
+    it('Аргумент: [number, date, string], результат: true', () => {
+      assert.isTrue(is.any.date([1, new Date(), '']))
+    })
+    it('Аргумент: [number, array, string], результат: false', () => {
+      assert.isFalse(is.any.date([1, [], 'Hello, world!']))
+    })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.any.date([]))
+    })
+  })
+
   describe('Тест интерфейса err', () => {
     it('Аргумент: [number, error, string], результат: true', () => {
       assert.isTrue(is.any.err([0, new Error(), '']))
@@ -185,6 +197,18 @@ describe('Тест интерфейса any при использовании о
     })
     it('Аргумент: [], результат: false', () => {
       assert.isFalse(is.any.obj([]))
+    })
+  })
+
+  describe('Тест интерфейса regexp', () => {
+    it('Аргумент: [number, regexp, string], результат: true', () => {
+      assert.isTrue(is.any.regexp([1, /a/, '']))
+    })
+    it('Аргумент: [number, array, string], результат: false', () => {
+      assert.isFalse(is.any.regexp([1, [], 'Hello, world!']))
+    })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.any.regexp([]))
     })
   })
 

@@ -50,6 +50,18 @@ describe('Тест интерфейса not.all при использовани�
     })
   })
 
+  describe('Тест интерфейса date', () => {
+    it('Аргумент: [date, date, date], результат: false', () => {
+      assert.isFalse(is.not.all.date([new Date(), new Date(), new Date()]))
+    })
+    it('Аргумент: [date, date, string], результат: true', () => {
+      assert.isTrue(is.not.all.date([new Date(), new Date(), '']))
+    })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.not.all.date([]))
+    })
+  })
+
   describe('Тест интерфейса err', () => {
     it('Аргумент: [err, err, err], результат: false', () => {
       assert.isFalse(is.not.all.err([new Error(), new Error(), new Error()]))
@@ -179,6 +191,18 @@ describe('Тест интерфейса not.all при использовани�
     })
     it('Аргумент: [], результат: false', () => {
       assert.isFalse(is.not.all.obj([]))
+    })
+  })
+
+  describe('Тест интерфейса regexp', () => {
+    it('Аргумент: [regexp, regexp, regexp], результат: false', () => {
+      assert.isFalse(is.not.all.regexp([/a/, /b/, /c/]))
+    })
+    it('Аргумент: [regexp, regexp, string], результат: true', () => {
+      assert.isTrue(is.not.all.char([/a/, /b/, '']))
+    })
+    it('Аргумент: [], результат: false', () => {
+      assert.isFalse(is.not.all.char([]))
     })
   })
 

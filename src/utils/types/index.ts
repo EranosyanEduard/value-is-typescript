@@ -8,6 +8,7 @@ export type Types =
   | typeof DefaultType
   | 'ARR'
   | 'CHAR'
+  | 'DATE'
   | 'ERR'
   | 'FALSY'
   | 'FLOAT'
@@ -16,6 +17,7 @@ export type Types =
   | 'NAN'
   | 'NULL'
   | 'NULLABLE'
+  | 'REGEXP'
   | 'SET'
   | 'TRUTHY'
 
@@ -28,6 +30,7 @@ export const TypeList: readonly Types[] = [
   'bigint',
   'boolean',
   'CHAR',
+  'DATE',
   'ERR',
   'FALSY',
   'FLOAT',
@@ -39,6 +42,7 @@ export const TypeList: readonly Types[] = [
   'NULLABLE',
   'number',
   'object',
+  'REGEXP',
   'SET',
   'string',
   'symbol',
