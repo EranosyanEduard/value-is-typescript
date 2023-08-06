@@ -1,7 +1,7 @@
 import { assert } from 'chai'
 import is from '..'
 
-describe('Тест интерфейса not при использовании овновных интерфейсов', () => {
+describe('Тест интерфейса not при использовании основных интерфейсов', () => {
   describe('Тест интерфейса arr', () => {
     it('Аргумент: array, результат: false', () => {
       assert.isFalse(is.not.arr([]))
