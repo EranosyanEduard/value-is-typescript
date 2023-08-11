@@ -1,4 +1,4 @@
-import { Predicate } from 'src/models'
+import { Predicate } from '../../../models'
 import { IChecker } from './model'
 
 class Checker<K extends string, V> implements IChecker<K, V> {
